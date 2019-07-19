@@ -1,0 +1,6 @@
+<li *ngFor="let num of arr" >
+    <input [type]="num.inputType" [placeholder]="num.placeholder" ><!-- *ngIf="num.inputType !== 'label'"
+    <label *ngIf="num.inputType === 'label'"></label> -->
+    <label *ngIf="num.checkbox">Check Box</label>
+    <label *ngIf="num.radio">select </label>
+</li>

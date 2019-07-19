@@ -1,0 +1,40 @@
+<style>
+    .item
+    {
+        height:150px;
+        width: 100%;
+        border:1px solid black;
+        display:inline-flex;
+        justify-content: center;
+        align-items: center;
+    }
+        </style>
+    
+        <div style="display:flex;">
+            <div cdkDropList [cdkDropListData]="numbers"
+            (cdkDropListDropped)="drop($event)"
+            [cdkDropListConnectedTo]="otherList"
+            #firstList="cdkDropList"
+             style="width:25%; border:solid black 1px;">
+                <div cdkDrag *ngFor="let num of numbers" class="item" style="background-color:aqua">{{num.name}}</div>
+            </div>
+           <div cdkDropList [cdkDropListData]="otherNumbers"
+           (cdkDropListDropped)="drop($event)" 
+           [cdkDropListConnectedTo]="firstList"
+           #otherList="cdkDropList"
+           style="width:25%; border:solid black 1px;" >
+           <div cdkDrag ><li *ngFor="let num of otherNumbers" >
+              <input [type]="num.inputType" [placeholder]="num.placeholder" ><!-- *ngIf="num.inputType !== 'label'"
+              <label *ngIf="num.inputType === 'label'"></label> -->
+              <label *ngIf="num.checkbox">Check Box</label>
+              <label *ngIf="num.radio">select </label>
+          </li>
+        </div> 
+        </div>
+        <div style="background-color:cornsilk"> {{result}}</div>
+    </div>
+        <hr>
+        <form (submit)="dosub(otherNumbers)"> 
+        <input type="submit" value="submit" >
+    </form>
+
